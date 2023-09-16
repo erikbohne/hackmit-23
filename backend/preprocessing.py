@@ -2,7 +2,7 @@ import xml.etree.ElementTree as ET
 import csv
 
 # Parse the GPX file
-tree = ET.parse('backend/1')
+tree = ET.parse('backend/3')
 root = tree.getroot()
 
 # Define namespaces
