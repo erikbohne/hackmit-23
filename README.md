@@ -1,2 +1,2 @@
-# hackMIT23
-Repo for hackMIT 2023 project.
+# HackMIT23
+Repo for HackMIT 2023 project.
