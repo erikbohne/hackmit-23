@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {Box, Button} from '@mui/material';
+import {Box, Button, Typography} from '@mui/material';
 import {useNavigate} from 'react-router-dom';
 import {signInWithPopup, GoogleAuthProvider} from 'firebase/auth';
 import {getFirestore, setDoc, getDoc, doc} from 'firebase/firestore';
@@ -42,14 +42,54 @@ const Login = () => {
   };  
 
   return (
-    <Box>
+    <Box
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      sx={{
+        height: '100vh',
+        backgroundColor: '#FFF',
+      }}
+    >
+
+      {/* Header */}
+      <Box
+        display="flex"
+        flexDirection="column"
+        justifyContent="center"
+        alignItems="center"
+        sx={{
+          margin: '20vh 0 20px 0',
+          color: '#333',
+        }}
+      >
+        <Typography
+          sx={{
+            background: "linear-gradient(to left, #F2AA0D, #FF8200)",
+            WebkitBackgroundClip: "text",
+            color: "transparent",
+            fontSize: "32px",
+            fontWeight: "bold",
+          }}
+        >
+          RHYTHM
+        </Typography>
+        <Typography
+          sx={{
+            color: '#233D4D',
+            fontSize: '12px',
+          }}
+        >
+          "Your favorite workout commenter"
+        </Typography>
+      </Box>
+
       {/* Google Sign Up */}
-      <Button 
+      <Button
         onClick={signInWithGoogle} 
         variant="contained" 
         sx={{ 
-          mt: 2, 
-          mb: 1, 
+          width: '70vw',
           backgroundColor: '#FFF',  // Google brand color
           color: '#000',  // Text color
           borderRadius: '2px',  // Google's buttons are usually more square
@@ -60,11 +100,10 @@ const Login = () => {
           boxShadow: '0 2px 4px 0 rgba(0,0,0,0.25)',  // Google-style box-shadow
           padding: '8px 24px',  // Padding as per Google guidelines
           display: 'flex',
-          alignItems: 'center'
         }}
         startIcon={<img src={`${process.env.PUBLIC_URL}/google_logo.png`} alt='Google Logo' style={{ height: '18px', marginRight: '8px' }}/>}  // Adjust the logo size and margin
       >
-        Sign up with Google
+        Sign in with Google
       </Button>
     </Box>
   )
