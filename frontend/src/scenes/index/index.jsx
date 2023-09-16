@@ -1,8 +1,9 @@
 import { Box, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import Navbar from "../../components/Navbar";
 import Comment from "../../components/Comment";
 import { getFirestore, collection, getDocs, query } from "firebase/firestore";
-import { auth } from "../../Firebase";  // Assuming this is where your Firebase authentication instance is
+import { auth } from "../../Firebase";
 
 const Home = () => {
   const [comments, setComments] = useState([]);
@@ -42,8 +43,11 @@ const Home = () => {
       }}
     >
 
+      {/* Navbar */}
+      <Navbar />
+
       {/* Header */}
-      <Box
+      {/* <Box
         display="flex"
         flexDirection="column"
         justifyContent="center"
@@ -52,7 +56,7 @@ const Home = () => {
         <Typography>
           Workout comments
         </Typography>
-      </Box>
+      </Box> */}
 
       {/* Comments */}
       <Box
@@ -60,6 +64,9 @@ const Home = () => {
         flexDirection="column"
         justifyContent="center"
         alignItems="center"
+        sx={{
+          marginTop: '20px',
+        }}
       >
         {comments.map(comment => (
           <Comment
