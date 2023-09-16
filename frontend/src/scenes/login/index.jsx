@@ -1,9 +1,13 @@
-import {Box} from '@mui/material';
+import {useState} from 'react';
+import {Box, Button} from '@mui/material';
+import {useNavigate} from 'react-router-dom';
 import {signInWithPopup, GoogleAuthProvider} from 'firebase/auth';
-import {getFirestore, setDoc, doc} from 'firebase/firestore';
+import {getFirestore, setDoc, getDoc, doc} from 'firebase/firestore';
 import {auth} from '../../Firebase';
 
 const Login = () => {
+  const navigate = useNavigate();
+  const [error, setError] = useState('');
 
   const signInWithGoogle = async () => {
     try {
@@ -13,27 +17,34 @@ const Login = () => {
         // The signed-in user info.
         const user = result.user;
   
-        // Create a user in your Firestore database
+        // Check if user exists in your Firestore database
         const db = getFirestore();
-        await setDoc(doc(db, "users", user.uid), {
-            username: user.displayName,
-            email: user.email,
-            createdAt: new Date(),
-        });
+        const userRef = doc(db, "users", user.uid);
+        const userSnap = await getDoc(userRef);
+  
+        if (!userSnap.exists()) {
+            // Create a new user document
+            await setDoc(userRef, {
+                username: user.displayName,
+                email: user.email,
+                createdAt: new Date(),
+            });
+        }
   
         // You can add navigation logic here if needed
-        navigate('/');
-    } catch (error) {
-        // Handle Errors here.
-        console.error(error);
+        console.log('Successfully signed in!');
+        navigate('/home');
+      } catch (error) {
+        console.error("Error Code:", error.code);
+        console.error("Error Message:", error.message);
         setError(error.message);
-    }
-  };
+     }     
+  };  
 
   return (
     <Box>
       {/* Google Sign Up */}
-      <CustomSignUp 
+      <Button 
         onClick={signInWithGoogle} 
         variant="contained" 
         sx={{ 
@@ -54,7 +65,7 @@ const Login = () => {
         startIcon={<img src={`${process.env.PUBLIC_URL}/google_logo.png`} alt='Google Logo' style={{ height: '18px', marginRight: '8px' }}/>}  // Adjust the logo size and margin
       >
         Sign up with Google
-      </CustomSignUp>
+      </Button>
     </Box>
   )
 }
