@@ -43,7 +43,7 @@ df['Low Power Interval'] = df['Rolling Power'] < 0.7 * avg_power
 df['High Heart Rate Interval'] = df['Rolling Heart Rate'] > 1.3 * avg_heart_rate
 
 # 3. Calculate Intervals, Zones, and Elevation Impact
-zones = {'Zone 1': (0, 120), 'Zone 2': (120, 140), 'Zone 3': (140, 160)}
+zones = {'Zone 1': (0, 120), 'Zone 2': (120, 140), 'Zone 3': (140, 185)}
 zone_times = {}
 for zone, (min_hr, max_hr) in zones.items():
     time_in_zone = df[(df['Heart Rate'] >= min_hr) & (df['Heart Rate'] < max_hr)]['Heart Rate'].count()
@@ -74,9 +74,9 @@ prompt_text = f"""
 The runner covered a distance of {distance:.2f} km in a duration of {duration//3600} hours {duration%3600//60} minutes.
 Their average speed was {avg_speed:.2f} km/h with an elevation gain of {total_elevation_gain:.2f} meters and a loss of {total_elevation_loss:.2f} meters.
 The average heart rate was {avg_heart_rate:.2f} bpm with a max of {max_heart_rate} bpm. The average power exerted was {avg_power:.2f} watts with a variability index of {variability_index:.2f}.
-They spent {zone_times['Zone 1']} seconds in Zone 1, {zone_times['Zone 2']} seconds in Zone 2, and {zone_times['Zone 3']} seconds in Zone 3.
-Given these details, provide personalized and clear insights and recommendations with specific time stamps and specific details about the run and its various characteristics. Offer valid advice to improve. Keep everything to one paragraph. Be professional,
-and make sure that anyone of all ages can understand the advice. Be specific and clear. Be concise and to the point. Be positive and encouraging. Be honest and realistic. Be helpful and informative. Be respectful and polite. Be professional and courteous.
+They spent {zone_times['Zone 1']} seconds in Zone 1, {zone_times['Zone 2']} seconds in Zone 2, and {zone_times['Zone 3']} seconds in Zone 3, with this as the key: 'Low': (0, 100), 'Medium': (100, 250), 'High': (250, 1000)
+Given these metrics, identify areas that might require improvement and provide personalized, clear, and actionable insights and recommendations. Ensure the advice is easily understandable for anyone of all ages. Be specific, concise, positive, encouraging, honest, respectful, and professional.
+Try not to use all the metrics given, just use the ones that would help the user. Make it as user-friendly as possible.
 """
 
 response = openai.Completion.create(engine="text-davinci-003", prompt=prompt_text, max_tokens=500)
