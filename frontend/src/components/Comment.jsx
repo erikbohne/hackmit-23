@@ -25,11 +25,13 @@ const Comment = ({ date, comment }) => {
         alignItems="center"
         sx={{
           width: "70vw",
+          height: "75px",
+          overflowY: "auto",
           margin: '10px auto',
           padding: '10px',
           borderRadius: '10px',
           background: "linear-gradient(to right, #F2AA0D, #FF8200)",
-          boxShadow: '0 5px 5px 0 rgba(0,0,0,.75)',
+          boxShadow: '0 2px 4px 0 rgba(0,0,0,0.25)',
         }}
       >
         <Typography>
