@@ -1,5 +1,6 @@
 import pandas as pd
 import openai
+import json
 
 # 1. Load the CSV file into a DataFrame
 df = pd.read_csv('backend/updated_trackpoints.csv')
@@ -34,11 +35,13 @@ summary = {
     'Average Elevation during Intense Efforts': avg_intense_elevation
 }
 
-openai.api_key = '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'
+with open('backend/config.json', 'r') as file:
+    config = json.load(file)
+    openai.api_key = config["OPENAI_API_KEY"]
 response = openai.Completion.create(
   engine="text-davinci-003",
-  prompt=f"The runner had {num_struggle_intervals} struggle intervals at an average elevation of {avg_struggle_elevation} meters. They had {num_intense_intervals} intense effort intervals at an average elevation of {avg_intense_elevation} meters. Provide insights and recommendations.",
-  max_tokens=200
+  prompt=f"The runner had {num_struggle_intervals} struggle intervals at an average elevation of {avg_struggle_elevation} meters. They had {num_intense_intervals} intense effort intervals at an average elevation of {avg_intense_elevation} meters. Provide insights and recommendations with specific time stamps with as much personalized detail as possible to the run and the various characteristics.",
+  max_tokens=500
 )
 insights = response.choices[0].text.strip()
 
