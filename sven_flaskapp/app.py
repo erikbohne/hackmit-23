@@ -101,27 +101,18 @@ def webhook():
    
     filtered_data = filter_data(data)
     
-    # Save the filtered data to a JSON file
-    with open('filtered_data.json', 'w') as file:
-        json.dump(filtered_data, file, indent=2)
+
+     # Now you can access data['data']
+    if 'data' in filtered_data:
+
+        # Save the filtered data to a JSON file
+        with open('filtered_data.json', 'w') as file:
+            json.dump(filtered_data, file, indent=2)
         
     
 
-    with open('filtered_data.json', 'r') as file:
-        data = json.load(file)
-
-
-
-    # Now you can access data['data']
-    if 'data' in data:
-
-        for i in data['data']:
-            #get_comment_data()
-            1+1
-
-
-        print('EXCERCISE SESSION RECIEVED TO WEBHOOK')
-        return jsonify({'message': 'Webhook received', 'data': filtered_data}), 202 # This 202 response can be used as a trigger client-side in javascript. Ask ChatGPT further.
+            print('EXCERCISE SESSION RECIEVED TO WEBHOOK')
+            return jsonify({'message': 'Webhook received', 'data': filtered_data}), 202 # This 202 response can be used as a trigger client-side in javascript. Ask ChatGPT further.
 
 
         
