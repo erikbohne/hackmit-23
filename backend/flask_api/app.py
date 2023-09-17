@@ -59,7 +59,7 @@ def add_comment():
         # Return a general error message (consider not exposing the actual error in production for security)
         return {"error": "An error occurred while processing the request."}, 500
     
-@app.route("/api/v1/get_auth", methods=["POST"])
+@app.route("/api/v1/get_auth", methods=["GET"])
 def get_auth_and_terraid():
     return terra_methods.get_auth_link()
     
