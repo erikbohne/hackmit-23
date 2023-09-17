@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { AppBar, Typography, Box, IconButton, Menu, MenuItem, Button } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
-const Navbar = ( userId ) => {
+const Navbar = ( {userId, terraId} ) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const fileInput = useRef(null); // using useRef to reference the file input
 
@@ -14,10 +14,50 @@ const Navbar = ( userId ) => {
     setAnchorEl(null);
   };
 
-  const handleSyncWithStrava = () => {
-    // TODO: Add Strava API call here
-    alert('Syncing with Strava!');
+  const handleSyncWithStrava = async () => { // Make sure to mark the function as async if using await inside
+    if (terraId === "empty") {
+        console.log("terraId is empty");
+        
+        const response = await fetch('http://127.0.0.1:5000/api/v1/get_auth', {
+            method: 'POST',
+            body: JSON.stringify({
+                userId: userId.userId,
+            }),
+        });
+
+        if (!response.ok) {
+            console.error('Server responded with', response.status);
+            const text = await response.text();
+            console.error('Response body:', text);
+            return;
+        }
+
+        const result = await response.json();
+        console.log(result); // Handle the backend response accordingly.
+
+    } else {
+      const formData = new FormData();
+      formData.append('userId', userId.userId);
+      formData.append('terraId', terraId);
+
+      const response = await fetch('http://127.0.0.1:5000/api/v1/sync', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        console.error('Server responded with', response.status);
+        const text = await response.text();
+        console.error('Response body:', text);
+        return;
+      }
+
+      const result = await response.json();
+      console.log(result); // Handle the backend response accordingly.
+      window.location.reload(); // Reload the page to see the new comment.
+    }
   };
+
 
   const handleLogout = () => {
     localStorage.removeItem('userToken');
@@ -29,9 +69,7 @@ const Navbar = ( userId ) => {
     if (file) {
       const formData = new FormData();
       formData.append('gpxFile', file);
-      formData.append('userId', userId.userId); 
-
-      console.log(userId)
+      formData.append('userId', userId.userId);
 
       try {
         const response = await fetch('http://127.0.0.1:5000/api/v1/add_comment', {

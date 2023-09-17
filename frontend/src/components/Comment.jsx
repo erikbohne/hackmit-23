@@ -26,7 +26,7 @@ const Comment = ({ title, comment, date }) => {
         alignItems="flex-start"
         sx={{
           width: "70vw",
-          height: "100px",
+          minHeight: "100px",
           overflowY: "auto",
           margin: '10px auto',
           padding: '10px',

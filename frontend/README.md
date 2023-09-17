@@ -1,70 +1,27 @@
-# Getting Started with Create React App
+## Inspiration
+In the evolving world of AI technology, we recognized an opportunity to enhance everyday experiences. One area that felt close to home was our post-workout interactions with GPS watches. The monotony of recurring, templated comments was evident. We envisioned an AI-driven platform that echoed the nuance of a personal trainer's feedback, making every workout feel even more personalized and rewarding.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## What it does
+There are two main options after you log in. Either upload your `.gpx` file manually, or sync it with your Strava account and Rhythm will generate the comments for your most recent workouts.
 
-## Available Scripts
+## How we built it
+For the **frontend** we used React and material UI to create a user-friendly and appealing interface for our product. Firebase serves as the auth provider and Firestore as the database. On the main page all the comments displayed are fetched from the users collection of comments in firestore.
 
-In the project directory, you can run:
+The **backend** is written in python with the Flask library. We created an endpoint to take a `.gpx` file and process the data, get a comment, and add it to the database. This ties together several API's and produces our end product, workout specific feedback and comments.
 
-### `npm start`
+## Challenges we ran into
+- **Promt-engineering** our GPT model to output in a style and format that satisfies how we want it to be.
+- Figuring out how to seamlessly integrate **Terra API** to our pipeline in order to get better results
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Accomplishments that we're proud of
+Beyond building a holistic product, we've crafted a versatile tool with potential integrations across an array of sports diary providers – from industry giants like Apple, Garmin, and Polar to niche platforms. The feedback generated can be a valuable addition to any fitness platform, making workouts more insightful and engaging.
 
-### `npm test`
+## What we learned
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## What's next for Rhythm
+- **More data**. We want to train our model on more data to improve the quality of the comments.
+- **More integrations**. We want to integrate with more fitness platforms to make our product more accessible.
+- **More features**. We want to add more features to our product to make it more useful for our users.
+- **More users**. We want to get more users to use our product and get feedback from them to improve our product.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
