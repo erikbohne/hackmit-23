@@ -40,4 +40,4 @@ Beyond building a holistic product, we've crafted a versatile tool with potentia
 
 
 ## Team
-<img src="https://github.com/erikbohne/hackmit-23/assets/40596752/5811ed24-21ef-4df6-a57f-a50b4b7f6361" width="70%">
+<img src="https://github.com/erikbohne/hackmit-23/assets/40596752/337918af-479e-4619-94ca-c97019726d2a" width="70%">
