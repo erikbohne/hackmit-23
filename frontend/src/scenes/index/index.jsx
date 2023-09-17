@@ -59,7 +59,7 @@ const Home = () => {
           marginTop: '20px',
         }}
       >
-        {comments.map(comment => (
+        {comments.sort((a, b) => new Date(b.date) - new Date(a.date)).map(comment => (
           <Comment
             key={comment.id}
             date={comment.date}
@@ -68,7 +68,6 @@ const Home = () => {
           />
         ))}
       </Box>
-
     </Box>
   );
 };

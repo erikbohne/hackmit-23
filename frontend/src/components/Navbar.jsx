@@ -48,6 +48,7 @@ const Navbar = ( userId ) => {
 
         const result = await response.json();
         console.log(result); // Handle the backend response accordingly.
+        window.location.reload(); // Reload the page to see the new comment.
 
       } catch (error) {
         console.error('Error uploading file:', error);
