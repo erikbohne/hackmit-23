@@ -164,3 +164,37 @@ def get_comment_data(df):
     insights = response.choices[0].text.strip()
 
     return insights
+
+
+def comment(json):
+
+    with open('config.json', 'r') as file:
+        config = json.load(file)
+        openai.api_key = config["OPENAI_API_KEY"]
+
+    prompt_text = f"""
+    Based on the following metrics for this run, provide a user-friendly analysis in a maximum of three sentences, like a coach would do:
+    {json}
+    Objective: Offer encouraging, concise, and specific feedback that's easily understandable, without restating the metrics.
+    
+    Here are two examples of feedback:
+    
+    You had great progress during this run as your pace kept improving throughout the run without a significant increase in heart rate. Keep up the good work, consistency is key!
+    
+    Do you feel tired? You heart rate was increasing throughout the run at the same pace, which is not a good sign. You should consider taking a break.
+    
+    We are interested in getting feedback for the following metrics:
+    - Was the session too easy or too hard? (e.g. bad progression in pace and heart rate)
+    - Did the user struggle at any point? (e.g. low power, high heart rate, etc.)
+    - Did the user have any intense efforts? 
+    - What type of run was this? (e.g. long run, tempo run, interval run, etc.)
+    - Any notable achievements? (e.g. really fast pace, really high heart rate, etc.)
+    
+    Try to keep the feedback as personal as possible, and refer to the session with examples of what the user did well and what they could improve.
+    
+    Only provide the comment.
+    """
+    response = openai.Completion.create(engine="text-davinci-003", prompt=prompt_text, max_tokens=500)
+    insights = response.choices[0].text.strip()
+
+    return insights
