@@ -1,6 +1,6 @@
 from terra.base_client import Terra
 
-def get_auth_link():
+def get_auth_link(uid):
     """
     Method that returns the authentication link for the user to click on and the terraId
     """
@@ -10,7 +10,7 @@ def get_auth_link():
 
     # Change to fit enviroment:
     REDIRECT_URL = "https://23f4-192-54-222-143.ngrok-free.app" # This should correspond to the url of where the web-app is hosted. It needs to be exposed to the internet.
-    my_reference_id = "username@test.com" # In-app username which can be used as an alias for user_id. 
+    my_reference_id = uid # In-app username which can be used as an alias for user_id. 
 
 
 

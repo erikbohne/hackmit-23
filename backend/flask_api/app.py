@@ -59,9 +59,17 @@ def add_comment():
         # Return a general error message (consider not exposing the actual error in production for security)
         return {"error": "An error occurred while processing the request."}, 500
     
-@app.route("/api/v1/get_auth", methods=["GET"])
+@app.route("/api/v1/get_auth", methods=["POST"])
 def get_auth_and_terraid():
-    return terra_methods.get_auth_link()
+    """
+    Endpoint for the API - returnes the authentication link and the terraId
+    """
+    # Check if user ID is present
+    if 'userId' not in flask.request.form:
+        return {"error": "No user ID provided."}, 400
+ 
+    uid = flask.request.form["userId"]
+    return terra_methods.get_auth_link(uid)
     
     
 
@@ -81,8 +89,7 @@ def sync():
         # Check if user has null as stravaID
         stravaId = flask.request.form["stravaId"]
         if not stravaId:
-            return {"error": "user not authenticated with Strava"}, 400
-            
+            return {"error": "user not authenticated with Strava"}, 400            
         
         return {"message": "Synced successfully"}, 200
 
