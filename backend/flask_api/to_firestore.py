@@ -6,7 +6,7 @@ from firebase_admin import firestore
 from firebase_admin import credentials
 import uuid  # to generate a unique comment_id
 
-def to_firestore(db, uid, comment_data):
+def to_firestore(uid, comment_data):
     """
     Main function to add comments to the database
     """

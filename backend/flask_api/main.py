@@ -5,6 +5,7 @@ Endpoint for the API - takes a gpx file as input and writes a comment to the fir
 import flask
 from gpx_to_df import gpx_to_df
 from get_comment_data import get_comment_data
+from to_firestore import to_firestore
 
 # init flask app
 app = flask.Flask(__name__)
@@ -28,6 +29,6 @@ def add_comment():
     comment_data = get_comment_data(gpx_dict)
     
     # Add the comment to the database
-    to_firebase(db, uid, comment_data)
+    to_firestore(uid, comment_data)
     
     return "Comment added successfully", 200
