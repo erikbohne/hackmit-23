@@ -23,11 +23,10 @@ const Comment = ({ title, comment, date }) => {
       <Box
         display="flex"
         flexDirection="column"
-        justifyContent="center"
         alignItems="flex-start"
         sx={{
           width: "70vw",
-          height: "150px",
+          height: "100px",
           overflowY: "auto",
           margin: '10px auto',
           padding: '10px',
@@ -39,7 +38,7 @@ const Comment = ({ title, comment, date }) => {
 
         {/* Title and Date Container */}
         <Box
-          mb={2}
+          mb={1}
           display="flex"
           flexDirection="row"
           justifyContent="space-between"
@@ -50,7 +49,7 @@ const Comment = ({ title, comment, date }) => {
           <Typography
             sx={{
               textAlign: 'left',
-              fontSize: '16px',
+              fontSize: '12px',
               fontWeight: 'bold',
               color: '#233D4D',
               flexGrow: 1, // This will make sure the title grows and takes up as much space as it can, pushing the date to the right
@@ -62,7 +61,7 @@ const Comment = ({ title, comment, date }) => {
           {/* Date */}
           <Typography
             sx={{
-              fontSize: '16px',
+              fontSize: '12px',
               color: '#EEE',
               marginLeft: 'auto', // This will push the date to the right
             }}
@@ -75,7 +74,7 @@ const Comment = ({ title, comment, date }) => {
         <Typography
           sx={{
             textAlign: 'center',
-            fontSize: '12px',
+            fontSize: '10px',
             color: '#EEE',
           }}
         >

@@ -7,24 +7,27 @@ import { auth } from "../../Firebase";
 
 const Home = () => {
   const [comments, setComments] = useState([]);
+  const [userId, setUserId] = useState(null);  // <-- Initialize the userId state
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       if (user) {
-        const userId = user.uid;
-        fetchComments(userId);
+        const uid = user.uid;
+        setUserId(uid);  // <-- Set the userId when user logs in
+        fetchComments(uid);
       } else {
         // Handle situation where user is not logged in or session has expired
-        setComments([]); // Clear comments
+        setUserId(null);  // Clear userId
+        setComments([]);  // Clear comments
       }
     });
 
     return () => unsubscribe();  // Cleanup the listener on component unmount
   }, []);
 
-  const fetchComments = async (userId) => {
+  const fetchComments = async (uid) => {
     const db = getFirestore();
-    const q = query(collection(db, "users", userId, "comments"));
+    const q = query(collection(db, "users", uid, "comments"));
     const querySnapshot = await getDocs(q);
 
     let fetchedComments = [];
@@ -38,15 +41,13 @@ const Home = () => {
   return (
     <Box
       sx={{
-        height: '100vh',
+        minHeight: '100vh',
         backgroundColor: '##FFFCFF',
       }}
     >
 
       {/* Navbar */}
-      <Navbar
-        userId={auth.currentUser?.uid}
-      />
+      <Navbar userId={userId} />
         
       {/* Comments */}
       <Box

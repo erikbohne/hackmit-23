@@ -14,18 +14,37 @@ const Navbar = ( userId ) => {
     setAnchorEl(null);
   };
 
+  const handleSyncWithStrava = () => {
+    // TODO: Add Strava API call here
+    alert('Syncing with Strava!');
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('userToken');
+    window.location.href = "/";
+  };
+
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
     if (file) {
       const formData = new FormData();
       formData.append('gpxFile', file);
-      formData.append('userId', userId); 
+      formData.append('userId', userId.userId); 
+
+      console.log(userId)
 
       try {
-        const response = await fetch('YOUR_BACKEND_ENDPOINT', {
+        const response = await fetch('http://127.0.0.1:5000/api/v1/add_comment', {
           method: 'POST',
           body: formData,
         });
+
+        if (!response.ok) {
+          console.error('Server responded with', response.status);
+          const text = await response.text();
+          console.error('Response body:', text);
+          return;
+        }
 
         const result = await response.json();
         console.log(result); // Handle the backend response accordingly.
@@ -111,9 +130,8 @@ const Navbar = ( userId ) => {
             open={Boolean(anchorEl)}
             onClose={handleMenuClose}
           >
-            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-            <MenuItem onClick={handleMenuClose}>Settings</MenuItem>
-            <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+            <MenuItem onClick={handleSyncWithStrava}>Sync Strava</MenuItem>
+            <MenuItem onClick={handleLogout}>Logout</MenuItem>
           </Menu>
         </Box>
       </Box>
