@@ -18,6 +18,10 @@ def gpx_to_df(gpx_file):
         'gpx': 'http://www.topografix.com/GPX/1/1',
         'gpxtpx': 'http://www.garmin.com/xmlschemas/TrackPointExtension/v1'
     }
+    
+    # Extract starting time 
+    date = root.find(".//gpx:metadata/gpx:time", namespace)
+    date = date.text if date is not None else None
 
     # Extract track points with heart rate and power
     trackpoints = []
@@ -38,5 +42,5 @@ def gpx_to_df(gpx_file):
         trackpoints.append((lat, lon, elevation, timestamp, heart_rate, power_value))
 
     # Return the data as pandas dataframe
-    df = pd.DataFrame(trackpoints, columns=['lat', 'lon', 'elevation', 'timestamp', 'heart_rate', 'power'])
-    return df
+    df = pd.DataFrame(trackpoints, columns=['Latitude', 'Longitude', 'Elevation (m)', 'timestamp', 'Heart Rate', 'Power'])
+    return df, date
