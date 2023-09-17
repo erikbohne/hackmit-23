@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { AppBar, Typography, Box, IconButton, Menu, MenuItem, Button } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
-const Navbar = () => {
+const Navbar = ( userId ) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const fileInput = useRef(null); // using useRef to reference the file input
 
@@ -19,6 +19,7 @@ const Navbar = () => {
     if (file) {
       const formData = new FormData();
       formData.append('gpxFile', file);
+      formData.append('userId', userId); 
 
       try {
         const response = await fetch('YOUR_BACKEND_ENDPOINT', {

@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar";
 import Comment from "../../components/Comment";
@@ -44,20 +44,10 @@ const Home = () => {
     >
 
       {/* Navbar */}
-      <Navbar />
-
-      {/* Header */}
-      {/* <Box
-        display="flex"
-        flexDirection="column"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Typography>
-          Workout comments
-        </Typography>
-      </Box> */}
-
+      <Navbar
+        userId={auth.currentUser?.uid}
+      />
+        
       {/* Comments */}
       <Box
         display="flex"
