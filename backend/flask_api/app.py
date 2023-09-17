@@ -5,10 +5,12 @@ Endpoint for the API - takes a gpx file as input and writes a comment to the fir
 import flask
 from flask_cors import CORS
 from gpx_to_df import gpx_to_df
-from get_comment_data import get_comment_data
+from get_comment_data import get_comment_data, comment
 from to_firestore import to_firestore
 import sven_terraAPI.terra_methods as terra_methods
-
+import json
+import requests
+import time
 
 # init flask app
 app = flask.Flask(__name__)
@@ -90,7 +92,25 @@ def sync():
         # Check if user has null as stravaID
         stravaId = flask.request.form["terraId"]
         if not stravaId:
-            return {"error": "user not authenticated with Strava"}, 400            
+            return {"error": "user not authenticated with Strava"}, 400
+        
+        terraId = flask.request.form["terraId"]
+
+        redir_url = "https://6d17-192-54-222-143.ngrok-free.app" # This should correspond to the url of where the web-app is hosted. It needs to be exposed to the internet.
+        auth_success_redirect_url = redir_url + f"/?user_id={terraId}&reference_id={uid}&resource=STRAVA"
+
+        # make request to endpoint with auth_success_redirect_url
+        req = requests.get(auth_success_redirect_url)
+        time.sleep(30)
+
+        # Call Sven function to get files
+        with open("filtered_data.json", "r") as file:
+            filtered_data = json.load(file)
+        
+
+        for data in filtered_data:
+            response = comment(data)
+            to_firestore(uid, response, "My workout", "Date")
         
         return {"message": "Synced successfully"}, 200
 
