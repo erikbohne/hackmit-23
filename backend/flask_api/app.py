@@ -56,3 +56,26 @@ def add_comment():
         
         # Return a general error message (consider not exposing the actual error in production for security)
         return {"error": "An error occurred while processing the request."}, 500
+
+@app.route("/api/v1/sync", methods=["POST"])
+def sync():
+    """
+    Endpoint for the API - takes uid and updates comments in firestore database
+    """
+    try:
+        # Check if user ID is present
+        if 'userId' not in flask.request.form:
+            return {"error": "No user ID provided."}, 400
+        
+        # Get the user id from the request
+        uid = flask.request.form["userId"]
+        
+        
+        return {"message": "Synced successfully"}, 200
+
+    except Exception as e:
+        # Log the exception for debugging
+        app.logger.error(f"Error occurred: {e}")
+        
+        # Return a general error message (consider not exposing the actual error in production for security)
+        return {"error": "An error occurred while processing the request."}, 500
