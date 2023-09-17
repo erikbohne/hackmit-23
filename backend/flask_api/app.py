@@ -69,7 +69,8 @@ def get_auth_and_terraid():
         return {"error": "No user ID provided."}, 400
  
     uid = flask.request.form["userId"]
-    return terra_methods.get_auth_link(uid)
+    auth_url, terraId = terra_methods.get_auth_link(uid)
+    return {"auth_url": auth_url, "terraId": terraId}, 200
     
     
 
@@ -87,7 +88,7 @@ def sync():
         uid = flask.request.form["userId"]
         
         # Check if user has null as stravaID
-        stravaId = flask.request.form["stravaId"]
+        stravaId = flask.request.form["terraId"]
         if not stravaId:
             return {"error": "user not authenticated with Strava"}, 400            
         
