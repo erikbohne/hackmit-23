@@ -106,6 +106,34 @@ const Login = () => {
       >
         Sign in with Google
       </Button>
+
+      {/* Footer */}
+      <Box
+        display="flex"
+        flexDirection="column"
+        justifyContent="center"
+        alignItems="center"
+        sx={{
+          position: 'absolute',
+          bottom: '20px',
+          color: '#333',
+        }}
+      >
+        <Typography
+          sx={{
+            fontSize: '12px',
+          }}
+        >
+          Made with ❤️ by the rhythm team
+        </Typography>
+        <Typography
+          sx={{
+            fontSize: '12px',
+          }}
+        >
+          © 2023 rhythm
+        </Typography>
+      </Box>
     </Box>
   )
 }

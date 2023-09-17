@@ -61,8 +61,9 @@ const Home = () => {
         {comments.map(comment => (
           <Comment
             key={comment.id}
-            date={comment.timestamp}
+            date={comment.date}
             comment={comment.comment}
+            title={comment.title}
           />
         ))}
       </Box>
