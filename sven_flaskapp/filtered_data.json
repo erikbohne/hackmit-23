@@ -1,0 +1,556 @@
+{
+  "user": {
+    "user_id": "7ec227af-cbc4-4073-a767-31e61dc8a663",
+    "provider": "STRAVA",
+    "reference_id": "undefined",
+    "scopes": "read,activity:read,activity:read_all,profile:read_all,read_all"
+  },
+  "type": "activity",
+  "data": [
+    {
+      "movement_data": {
+        "avg_cadence_rpm": 81.3,
+        "normalized_speed_meters_per_second": 300,
+        "avg_speed_meters_per_second": 3.277,
+        "max_speed_meters_per_second": 10.28,
+        "max_cadence_rpm": 105,
+        "adjusted_max_speed_meters_per_second": 6.52
+      },
+      "device_data": {
+        "name": "Polar Vantage V"
+      },
+      "calories_data": {
+        "total_burned_calories": 198.0392156862745,
+        "net_activity_calories": 687.0
+      },
+      "heart_rate_data": {
+        "summary": {
+          "avg_hr_bpm": 159.29943899018232,
+          "min_hr_bpm": 86,
+          "max_hr_bpm": 175
+        }
+      },
+      "metadata": {
+        "type": 8,
+        "end_time": "2023-03-04T15:46:51.000000+01:00",
+        "summary_id": 8662943593,
+        "start_time": "2023-03-04T14:58:47.000000+01:00",
+        "upload_type": 1,
+        "name": "Run"
+      },
+      "active_durations_data": {
+        "activity_seconds": 2775,
+        "inactivity_seconds": 109
+      },
+      "work_data": {
+        "work_kilojoules": 828.2
+      },
+      "power_data": {
+        "avg_watts": 298.4,
+        "max_watts": 482
+      },
+      "distance_data": {
+        "summary": {
+          "elevation": {
+            "max_meters": 37.8,
+            "loss_actual_meters": 116.80000000000001,
+            "avg_meters": 21.29084852735049,
+            "min_meters": 12.8,
+            "gain_actual_meters": 89.0
+          },
+          "distance_meters": 9094.7
+        }
+      }
+    },
+    {
+      "movement_data": {
+        "avg_cadence_rpm": 79.5,
+        "normalized_speed_meters_per_second": 323,
+        "avg_speed_meters_per_second": 3.261,
+        "max_speed_meters_per_second": 5.44,
+        "max_cadence_rpm": 84,
+        "adjusted_max_speed_meters_per_second": 5.44
+      },
+      "device_data": {
+        "name": "Polar Vantage V"
+      },
+      "calories_data": {
+        "total_burned_calories": 213.79722620755618,
+        "net_activity_calories": 609.0
+      },
+      "heart_rate_data": {
+        "summary": {
+          "avg_hr_bpm": 142.56436974789915,
+          "min_hr_bpm": 71,
+          "max_hr_bpm": 175
+        }
+      },
+      "metadata": {
+        "type": 8,
+        "end_time": "2023-03-01T18:28:06.000000+01:00",
+        "summary_id": 8642909510,
+        "start_time": "2023-03-01T17:36:09.000000+01:00",
+        "upload_type": 1,
+        "name": "Run"
+      },
+      "active_durations_data": {
+        "activity_seconds": 2884,
+        "inactivity_seconds": 233
+      },
+      "work_data": {
+        "work_kilojoules": 894.1
+      },
+      "power_data": {
+        "avg_watts": 310.0,
+        "max_watts": 452
+      },
+      "distance_data": {
+        "summary": {
+          "elevation": {
+            "max_meters": 16.6,
+            "loss_actual_meters": 85.49999999999999,
+            "avg_meters": -1.6810756302521228,
+            "min_meters": -10.4,
+            "gain_actual_meters": 65.1
+          },
+          "distance_meters": 9405.3
+        }
+      }
+    },
+    {
+      "movement_data": {
+        "avg_speed_meters_per_second": 3.012,
+        "max_speed_meters_per_second": 3.936,
+        "adjusted_max_speed_meters_per_second": 3.936
+      },
+      "device_data": {
+        "name": "Strava iPhone App"
+      },
+      "calories_data": {
+        "total_burned_calories": 278.2,
+        "net_activity_calories": 278.2
+      },
+      "metadata": {
+        "type": 8,
+        "end_time": "2023-02-26T15:25:04.000000+01:00",
+        "summary_id": 8625935889,
+        "start_time": "2023-02-26T15:07:35.000000+01:00",
+        "upload_type": 1,
+        "name": "Run"
+      },
+      "active_durations_data": {
+        "activity_seconds": 1044,
+        "inactivity_seconds": 5
+      },
+      "work_data": {
+        "work_kilojoules": 1163.4324000000001
+      },
+      "distance_data": {
+        "summary": {
+          "elevation": {
+            "max_meters": 51.2,
+            "loss_actual_meters": 50.900000000000155,
+            "avg_meters": 19.063223938223924,
+            "min_meters": 3.3,
+            "gain_actual_meters": 20.0
+          },
+          "distance_meters": 3144.1
+        }
+      }
+    },
+    {
+      "movement_data": {
+        "avg_cadence_rpm": 80.9,
+        "normalized_speed_meters_per_second": 276,
+        "avg_speed_meters_per_second": 2.83,
+        "max_speed_meters_per_second": 5.74,
+        "max_cadence_rpm": 112,
+        "adjusted_max_speed_meters_per_second": 5.74
+      },
+      "device_data": {
+        "name": "Polar Vantage V"
+      },
+      "calories_data": {
+        "total_burned_calories": 336.6331898613103,
+        "net_activity_calories": 1173.0
+      },
+      "heart_rate_data": {
+        "summary": {
+          "avg_hr_bpm": 153.1458736923673,
+          "min_hr_bpm": 99,
+          "max_hr_bpm": 164
+        }
+      },
+      "metadata": {
+        "type": 8,
+        "end_time": "2023-02-26T15:00:01.000000+01:00",
+        "summary_id": 8625942845,
+        "start_time": "2023-02-26T13:32:28.000000+01:00",
+        "upload_type": 1,
+        "name": "Run"
+      },
+      "active_durations_data": {
+        "activity_seconds": 5141,
+        "inactivity_seconds": 112
+      },
+      "work_data": {
+        "work_kilojoules": 1407.8
+      },
+      "power_data": {
+        "avg_watts": 273.8,
+        "max_watts": 550
+      },
+      "distance_data": {
+        "summary": {
+          "elevation": {
+            "max_meters": 60.8,
+            "loss_actual_meters": 230.3,
+            "avg_meters": 26.73601317318852,
+            "min_meters": 14.8,
+            "gain_actual_meters": 192.9
+          },
+          "distance_meters": 14550.9
+        }
+      }
+    },
+    {
+      "movement_data": {
+        "avg_cadence_rpm": 81.4,
+        "normalized_speed_meters_per_second": 378,
+        "avg_speed_meters_per_second": 3.677,
+        "max_speed_meters_per_second": 12.38,
+        "max_cadence_rpm": 110,
+        "adjusted_max_speed_meters_per_second": 12.38
+      },
+      "device_data": {
+        "name": "Polar Vantage V"
+      },
+      "calories_data": {
+        "total_burned_calories": 367.47967479674793,
+        "net_activity_calories": 752.0
+      },
+      "heart_rate_data": {
+        "summary": {
+          "avg_hr_bpm": 130.97578579743887,
+          "min_hr_bpm": 88,
+          "max_hr_bpm": 156
+        }
+      },
+      "metadata": {
+        "type": 65,
+        "end_time": "2023-02-24T20:07:16.000000+01:00",
+        "summary_id": 8615937810,
+        "start_time": "2023-02-24T18:55:42.000000+01:00",
+        "upload_type": 1,
+        "name": "NordicSki"
+      },
+      "active_durations_data": {
+        "activity_seconds": 4294
+      },
+      "work_data": {
+        "work_kilojoules": 1536.8
+      },
+      "power_data": {
+        "avg_watts": 357.9,
+        "max_watts": 760
+      },
+      "distance_data": {
+        "summary": {
+          "elevation": {
+            "max_meters": 391.2,
+            "loss_actual_meters": 409.39999999999986,
+            "avg_meters": 337.5106635622724,
+            "min_meters": 290.2,
+            "gain_actual_meters": 395.0
+          },
+          "distance_meters": 15787.6
+        }
+      }
+    },
+    {
+      "movement_data": {
+        "avg_cadence_rpm": 80.6,
+        "normalized_speed_meters_per_second": 498,
+        "avg_speed_meters_per_second": 4.84,
+        "max_speed_meters_per_second": 14.92,
+        "max_cadence_rpm": 107,
+        "adjusted_max_speed_meters_per_second": 14.92
+      },
+      "device_data": {
+        "name": "Polar Vantage V"
+      },
+      "calories_data": {
+        "total_burned_calories": 243.37637494021996,
+        "net_activity_calories": 402.0
+      },
+      "heart_rate_data": {
+        "summary": {
+          "avg_hr_bpm": 138.89655172413794,
+          "min_hr_bpm": 83,
+          "max_hr_bpm": 182
+        }
+      },
+      "metadata": {
+        "type": 65,
+        "end_time": "2023-02-22T21:11:13.000000+01:00",
+        "summary_id": 8605951664,
+        "start_time": "2023-02-22T20:35:28.000000+01:00",
+        "upload_type": 1,
+        "name": "NordicSki"
+      },
+      "active_durations_data": {
+        "activity_seconds": 2145
+      },
+      "work_data": {
+        "work_kilojoules": 1017.8
+      },
+      "power_data": {
+        "avg_watts": 474.5,
+        "max_watts": 1010
+      },
+      "distance_data": {
+        "summary": {
+          "elevation": {
+            "max_meters": 391.4,
+            "loss_actual_meters": 263.0,
+            "avg_meters": 341.27935694316017,
+            "min_meters": 293.4,
+            "gain_actual_meters": 262.9
+          },
+          "distance_meters": 10381.5
+        }
+      }
+    },
+    {
+      "movement_data": {
+        "avg_cadence_rpm": 79.8,
+        "normalized_speed_meters_per_second": 288,
+        "avg_speed_meters_per_second": 2.989,
+        "max_speed_meters_per_second": 5.36,
+        "max_cadence_rpm": 86,
+        "adjusted_max_speed_meters_per_second": 5.36
+      },
+      "device_data": {
+        "name": "Polar Vantage V"
+      },
+      "calories_data": {
+        "total_burned_calories": 138.80918220946913,
+        "net_activity_calories": 430.0
+      },
+      "heart_rate_data": {
+        "summary": {
+          "avg_hr_bpm": 146.19585594474594,
+          "min_hr_bpm": 84,
+          "max_hr_bpm": 162
+        }
+      },
+      "metadata": {
+        "type": 8,
+        "end_time": "2023-02-19T19:15:27.000000+01:00",
+        "summary_id": 8589145264,
+        "start_time": "2023-02-19T18:41:21.000000+01:00",
+        "upload_type": 1,
+        "name": "Run"
+      },
+      "active_durations_data": {
+        "activity_seconds": 2011,
+        "inactivity_seconds": 35
+      },
+      "work_data": {
+        "work_kilojoules": 580.5
+      },
+      "power_data": {
+        "avg_watts": 288.7,
+        "max_watts": 508
+      },
+      "distance_data": {
+        "summary": {
+          "elevation": {
+            "max_meters": 42.8,
+            "loss_actual_meters": 52.499999999999986,
+            "avg_meters": 19.503453379378357,
+            "min_meters": 10.8,
+            "gain_actual_meters": 53.0
+          },
+          "distance_meters": 6010.2
+        }
+      }
+    },
+    {
+      "movement_data": {
+        "avg_cadence_rpm": 79.2,
+        "normalized_speed_meters_per_second": 266,
+        "avg_speed_meters_per_second": 2.907,
+        "max_speed_meters_per_second": 5.385,
+        "max_cadence_rpm": 84,
+        "adjusted_max_speed_meters_per_second": 5.05
+      },
+      "device_data": {
+        "name": "Polar Vantage V"
+      },
+      "calories_data": {
+        "total_burned_calories": 129.3639406982305,
+        "net_activity_calories": 417.0
+      },
+      "heart_rate_data": {
+        "summary": {
+          "avg_hr_bpm": 138.90379871731622,
+          "min_hr_bpm": 88,
+          "max_hr_bpm": 158
+        }
+      },
+      "metadata": {
+        "type": 8,
+        "end_time": "2023-02-17T17:28:07.000000+01:00",
+        "summary_id": 8576760440,
+        "start_time": "2023-02-17T16:52:57.000000+01:00",
+        "upload_type": 1,
+        "name": "Run"
+      },
+      "active_durations_data": {
+        "activity_seconds": 1992,
+        "inactivity_seconds": 118
+      },
+      "work_data": {
+        "work_kilojoules": 541.0
+      },
+      "power_data": {
+        "avg_watts": 271.6,
+        "max_watts": 392
+      },
+      "distance_data": {
+        "summary": {
+          "elevation": {
+            "max_meters": 41.5,
+            "loss_actual_meters": 41.699999999999996,
+            "avg_meters": 23.6829304390721,
+            "min_meters": 19.5,
+            "gain_actual_meters": 25.0
+          },
+          "distance_meters": 5790.5
+        }
+      }
+    },
+    {
+      "movement_data": {
+        "avg_cadence_rpm": 79.4,
+        "normalized_speed_meters_per_second": 303,
+        "avg_speed_meters_per_second": 3.175,
+        "max_speed_meters_per_second": 6.96,
+        "max_cadence_rpm": 104,
+        "adjusted_max_speed_meters_per_second": 6.96
+      },
+      "device_data": {
+        "name": "Polar Vantage V"
+      },
+      "calories_data": {
+        "total_burned_calories": 187.32663797226206,
+        "net_activity_calories": 593.0
+      },
+      "heart_rate_data": {
+        "summary": {
+          "avg_hr_bpm": 149.01492537313433,
+          "min_hr_bpm": 87,
+          "max_hr_bpm": 181
+        }
+      },
+      "metadata": {
+        "type": 8,
+        "end_time": "2023-02-15T20:09:09.000000+01:00",
+        "summary_id": 8567130755,
+        "start_time": "2023-02-15T19:18:13.000000+01:00",
+        "upload_type": 1,
+        "name": "Run"
+      },
+      "active_durations_data": {
+        "activity_seconds": 2659,
+        "inactivity_seconds": 397
+      },
+      "work_data": {
+        "work_kilojoules": 783.4
+      },
+      "power_data": {
+        "avg_watts": 294.6,
+        "max_watts": 468
+      },
+      "distance_data": {
+        "summary": {
+          "elevation": {
+            "max_meters": 56.2,
+            "loss_actual_meters": 63.099999999999994,
+            "avg_meters": 41.43486140725066,
+            "min_meters": 36.3,
+            "gain_actual_meters": 38.9
+          },
+          "distance_meters": 8442.7
+        }
+      }
+    },
+    {
+      "movement_data": {
+        "avg_cadence_rpm": 80.9,
+        "normalized_speed_meters_per_second": 287,
+        "avg_speed_meters_per_second": 3.077,
+        "max_speed_meters_per_second": 10.12,
+        "max_cadence_rpm": 97,
+        "adjusted_max_speed_meters_per_second": 10.12
+      },
+      "device_data": {
+        "name": "Polar Vantage V"
+      },
+      "calories_data": {
+        "total_burned_calories": 332.233381157341,
+        "net_activity_calories": 1064.0
+      },
+      "heart_rate_data": {
+        "summary": {
+          "avg_hr_bpm": 146.86179843089923,
+          "min_hr_bpm": 74,
+          "max_hr_bpm": 164
+        }
+      },
+      "metadata": {
+        "type": 8,
+        "end_time": "2023-02-12T12:31:00.000000+01:00",
+        "summary_id": 8547809504,
+        "start_time": "2023-02-12T11:07:20.000000+01:00",
+        "upload_type": 1,
+        "name": "Run"
+      },
+      "active_durations_data": {
+        "activity_seconds": 4879,
+        "inactivity_seconds": 141
+      },
+      "work_data": {
+        "work_kilojoules": 1389.4
+      },
+      "power_data": {
+        "avg_watts": 284.8,
+        "max_watts": 492
+      },
+      "distance_data": {
+        "summary": {
+          "elevation": {
+            "max_meters": 71.9,
+            "loss_actual_meters": 185.0,
+            "avg_meters": 34.0721585194126,
+            "min_meters": 19.1,
+            "gain_actual_meters": 135.6
+          },
+          "distance_meters": 15012.8
+        }
+      }
+    }
+  ],
+  "version": "2022-03-16"
+}       "avg_meters": 350.2105378704565,
+            "min_meters": 296.6,
+            "gain_actual_meters": 267.9
+          },
+          "distance_meters": 10550.3
+        }
+      }
+    }
+  ],
+  "version": "2022-03-16"
+}

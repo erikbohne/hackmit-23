@@ -28,6 +28,7 @@ const Login = () => {
                 username: user.displayName,
                 email: user.email,
                 createdAt: new Date(),
+                terraId: "empty",
             });
         }
   

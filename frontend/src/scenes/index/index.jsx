@@ -2,19 +2,22 @@ import { Box } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar";
 import Comment from "../../components/Comment";
-import { getFirestore, collection, getDocs, query } from "firebase/firestore";
-import { auth } from "../../Firebase";
+import { collection, getDocs, getDoc, doc, query } from "firebase/firestore";
+import { auth, db } from "../../Firebase";
 
 const Home = () => {
   const [comments, setComments] = useState([]);
   const [userId, setUserId] = useState(null);  // <-- Initialize the userId state
+  const [terraId, setTerraId] = useState(null);  // <-- Initialize the terraId state
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       if (user) {
         const uid = user.uid;
+        
         setUserId(uid);  // <-- Set the userId when user logs in
         fetchComments(uid);
+        fetchTerraId(uid);
       } else {
         // Handle situation where user is not logged in or session has expired
         setUserId(null);  // Clear userId
@@ -26,7 +29,6 @@ const Home = () => {
   }, []);
 
   const fetchComments = async (uid) => {
-    const db = getFirestore();
     const q = query(collection(db, "users", uid, "comments"));
     const querySnapshot = await getDocs(q);
 
@@ -38,6 +40,21 @@ const Home = () => {
     setComments(fetchedComments);
   };
 
+  const fetchTerraId = async (uid) => {
+    // Reference to the user's document directly
+    const userDocRef = doc(db, "users", uid);
+
+    const userDoc = await getDoc(userDocRef);
+
+    if (userDoc.exists()) {
+        const terraId = userDoc.data().terraId;
+
+        setTerraId(terraId); // This assumes terraId is a single value and not an array.
+    } else {
+        console.warn(`Document for UID ${uid} does not exist`);
+    }
+  }
+
   return (
     <Box
       sx={{
@@ -46,8 +63,12 @@ const Home = () => {
       }}
     >
 
+      {console.log(typeof terraId, terraId)}
       {/* Navbar */}
-      <Navbar userId={userId} />
+      <Navbar 
+        userId={userId} 
+        terraId={terraId}
+      />
         
       {/* Comments */}
       <Box

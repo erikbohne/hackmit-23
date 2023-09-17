@@ -9,7 +9,7 @@ def get_auth_link(uid):
     SECRET = "b02af50cbd3127afcb1fc52d18269a2c005f3eccdcc9e56e" # ngrok webhook signing secret 
 
     # Change to fit enviroment:
-    REDIRECT_URL = "https://23f4-192-54-222-143.ngrok-free.app" # This should correspond to the url of where the web-app is hosted. It needs to be exposed to the internet.
+    REDIRECT_URL = "https://6d17-192-54-222-143.ngrok-free.app" # This should correspond to the url of where the web-app is hosted. It needs to be exposed to the internet.
     my_reference_id = uid # In-app username which can be used as an alias for user_id. 
 
 

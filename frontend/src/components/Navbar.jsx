@@ -1,8 +1,10 @@
 import React, { useState, useRef } from 'react';
 import { AppBar, Typography, Box, IconButton, Menu, MenuItem, Button } from '@mui/material';
+import { db } from '../Firebase';
+import { doc, setDoc } from 'firebase/firestore';
 import MenuIcon from '@mui/icons-material/Menu';
 
-const Navbar = ( userId ) => {
+const Navbar = ( {userId, terraId} ) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const fileInput = useRef(null); // using useRef to reference the file input
 
@@ -14,9 +16,68 @@ const Navbar = ( userId ) => {
     setAnchorEl(null);
   };
 
-  const handleSyncWithStrava = () => {
-    // TODO: Add Strava API call here
-    alert('Syncing with Strava!');
+  const handleConnectStrava = async () => { // Make sure to mark the function as async if using await inside
+    if (terraId === "empty") {
+        console.log("terraId is empty");
+
+        const formData = new FormData();
+        formData.append('userId', userId.userId);
+        
+        const response = await fetch('http://127.0.0.1:5000/api/v1/get_auth', {
+            method: 'POST',
+            body: formData,
+        });
+
+        if (!response.ok) {
+            console.error('Server responded with', response.status);
+            const text = await response.text();
+            console.error('Response body:', text);
+            return;
+        }
+
+        const result = await response.json();
+        console.log(result); // Handle the backend response accordingly.
+
+        // add result.terraId to the user's document in firestore users/{userId}/terraId
+        const new_terraId = result.terraId;
+        const userDocRef = doc(db, "users", userId);
+        await setDoc(userDocRef, {
+            terraId: new_terraId,
+        }, { merge: true });
+
+        // go to the strava auth page received from the result.auth_url
+        if (result.auth_url) {
+          window.open(result.auth_url, '_blank');
+      }
+
+      window.location.reload(); // Reload the page.
+
+    } else {
+      // alert alearady connected
+      alert("Already connected to Strava!");
+    }
+  };
+
+  const handleSyncStrava = async () => {
+    const formData = new FormData();
+      formData.append('userId', userId.userId);
+      formData.append('terraId', terraId);
+
+      const response = await fetch('http://127.0.0.1:5000/api/v1/sync', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        console.error('Server responded with', response.status);
+        const text = await response.text();
+        console.error('Response body:', text);
+        return;
+      }
+
+      const result = await response.json();
+      console.log(result); // Handle the backend response accordingly.
+      window.location.reload(); // Reload the page to see the new comment.
   };
 
   const handleLogout = () => {
@@ -29,9 +90,7 @@ const Navbar = ( userId ) => {
     if (file) {
       const formData = new FormData();
       formData.append('gpxFile', file);
-      formData.append('userId', userId.userId); 
-
-      console.log(userId)
+      formData.append('userId', userId.userId);
 
       try {
         const response = await fetch('http://127.0.0.1:5000/api/v1/add_comment', {
@@ -131,7 +190,8 @@ const Navbar = ( userId ) => {
             open={Boolean(anchorEl)}
             onClose={handleMenuClose}
           >
-            <MenuItem onClick={handleSyncWithStrava}>Sync Strava</MenuItem>
+            <MenuItem onClick={handleConnectStrava}>Connect Strava</MenuItem>
+            <MenuItem onClick={handleSyncStrava}>Sync Strava</MenuItem>
             <MenuItem onClick={handleLogout}>Logout</MenuItem>
           </Menu>
         </Box>
