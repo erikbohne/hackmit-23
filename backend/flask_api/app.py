@@ -7,6 +7,8 @@ from flask_cors import CORS
 from gpx_to_df import gpx_to_df
 from get_comment_data import get_comment_data
 from to_firestore import to_firestore
+import sven_terraAPI.terra_methods as terra_methods
+
 
 # init flask app
 app = flask.Flask(__name__)
@@ -56,6 +58,21 @@ def add_comment():
         
         # Return a general error message (consider not exposing the actual error in production for security)
         return {"error": "An error occurred while processing the request."}, 500
+    
+@app.route("/api/v1/get_auth", methods=["POST"])
+def get_auth_and_terraid():
+    """
+    Endpoint for the API - returnes the authentication link and the terraId
+    """
+    # Check if user ID is present
+    if 'userId' not in flask.request.form:
+        return {"error": "No user ID provided."}, 400
+ 
+    uid = flask.request.form["userId"]
+    auth_url, terraId = terra_methods.get_auth_link(uid)
+    return {"auth_url": auth_url, "terraId": terraId}, 200
+    
+    
 
 @app.route("/api/v1/sync", methods=["POST"])
 def sync():
@@ -70,6 +87,10 @@ def sync():
         # Get the user id from the request
         uid = flask.request.form["userId"]
         
+        # Check if user has null as stravaID
+        stravaId = flask.request.form["terraId"]
+        if not stravaId:
+            return {"error": "user not authenticated with Strava"}, 400            
         
         return {"message": "Synced successfully"}, 200
 
