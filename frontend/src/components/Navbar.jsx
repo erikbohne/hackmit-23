@@ -16,6 +16,37 @@ const Navbar = ( {userId, terraId} ) => {
     setAnchorEl(null);
   };
 
+  const handleFileUpload = async (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const formData69 = new FormData();
+      formData69.append('gpxFile', file);
+      formData69.append('userId', userId);
+      console.log(formData69);
+
+      try {
+        const response = await fetch('https://vishruthb--app-py-create-app-dev.modal.run/api/v1/add_comment', {
+          method: 'POST',
+          body: formData69,
+        });
+
+        if (!response.ok) {
+          console.error('Server responded with', response.status);
+          const text = await response.text();
+          console.error('Response body:', text);
+          return;
+        }
+
+        const result = await response.json();
+        console.log(result); // Handle the backend response accordingly.
+        window.location.reload(); // Reload the page to see the new comment.
+
+      } catch (error) {
+        console.error('Error uploading file:', error);
+      }
+    }
+  };
+
   const handleConnectStrava = async () => { // Make sure to mark the function as async if using await inside
     if (terraId === "empty") {
         console.log("terraId is empty");
@@ -23,7 +54,7 @@ const Navbar = ( {userId, terraId} ) => {
         const formData = new FormData();
         formData.append('userId', userId.userId);
         
-        const response = await fetch('http://127.0.0.1:5000/api/v1/get_auth', {
+        const response = await fetch('https://vishruthb--app-py-create-app-dev.modal.run/api/v1/get_auth', {
             method: 'POST',
             body: formData,
         });
@@ -63,7 +94,7 @@ const Navbar = ( {userId, terraId} ) => {
       formData.append('userId', userId.userId);
       formData.append('terraId', terraId);
 
-      const response = await fetch('http://127.0.0.1:5000/api/v1/sync', {
+      const response = await fetch('https://vishruthb--app-py-create-app-dev.modal.run/api/v1/sync', {
         method: 'POST',
         body: formData,
       });
@@ -83,36 +114,6 @@ const Navbar = ( {userId, terraId} ) => {
   const handleLogout = () => {
     localStorage.removeItem('userToken');
     window.location.href = "/";
-  };
-
-  const handleFileUpload = async (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const formData = new FormData();
-      formData.append('gpxFile', file);
-      formData.append('userId', userId.userId);
-
-      try {
-        const response = await fetch('http://127.0.0.1:5000/api/v1/add_comment', {
-          method: 'POST',
-          body: formData,
-        });
-
-        if (!response.ok) {
-          console.error('Server responded with', response.status);
-          const text = await response.text();
-          console.error('Response body:', text);
-          return;
-        }
-
-        const result = await response.json();
-        console.log(result); // Handle the backend response accordingly.
-        window.location.reload(); // Reload the page to see the new comment.
-
-      } catch (error) {
-        console.error('Error uploading file:', error);
-      }
-    }
   };
 
   return (
