@@ -119,4 +119,4 @@ def sync():
         app.logger.error(f"Error occurred: {e}")
         
         # Return a general error message (consider not exposing the actual error in production for security)
-        return {"error": "An error occurred while processing the request."}, 500
+        return {"error": "An error occurred while processing the request."}, 500 
