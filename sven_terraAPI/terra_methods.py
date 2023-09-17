@@ -1,6 +1,9 @@
 from terra.base_client import Terra
 
 def get_auth_link():
+    """
+    Method that returns the authentication link for the user to click on and the terraId
+    """
     API_KEY = "ESqAayVypWYUfBreKU6bxtVrFpxoqnpk"
     DEV_ID = "hackmit-testing-teLPulJ7ER"
     SECRET = "b02af50cbd3127afcb1fc52d18269a2c005f3eccdcc9e56e" # ngrok webhook signing secret 
