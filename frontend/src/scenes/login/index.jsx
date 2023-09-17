@@ -70,9 +70,10 @@ const Login = () => {
             color: "transparent",
             fontSize: "32px",
             fontWeight: "bold",
+            fontFamily: 'IBM Plex Sans, sans-serif',
           }}
         >
-          RHYTHM
+          rhythm
         </Typography>
         <Typography
           sx={{
