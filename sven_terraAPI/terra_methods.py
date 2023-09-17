@@ -19,3 +19,4 @@ def get_auth_link():
         auth_success_redirect_url = REDIRECT_URL + "/?user_id=wow_a_new_user&reference_id=fun_identifier&resource=STRAVA",
     auth_failure_redirect_url = REDIRECT_URL + "/fail",
     ).get_parsed_response()
+    return auth_resp.auth_url, auth_resp.user_id
