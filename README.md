@@ -3,9 +3,7 @@
 ## Introduction
 Repo for HackMIT 2023 project.
 
-
-![showcase](https://github.com/erikbohne/hackmit-23/assets/40596752/1fba3028-caf9-4d61-854d-8c58b23e2a39)
-
+<img src="https://github.com/erikbohne/hackmit-23/assets/40596752/1fba3028-caf9-4d61-854d-8c58b23e2a39" width="300" height="200">
 
 ## Table of Contents
 1. [Project Overview](#project-overview)
